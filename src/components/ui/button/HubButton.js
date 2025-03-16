@@ -75,6 +75,7 @@ export class HubButton extends LitElement {
         font-weight: 600;
         cursor: pointer;
         transition: opacity 0.2s ease;
+        font-size: 16px;
       }
 
       button.transparent {

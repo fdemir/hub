@@ -133,7 +133,7 @@ export class HubNavbar extends LitElement {
           position: absolute;
           top: 60px;
           right: 0;
-          flex-direction: column;
+          flex-direction: column-reverse;
           background-color: white;
           width: 100%;
           max-height: 0;

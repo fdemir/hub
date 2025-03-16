@@ -58,6 +58,8 @@ export class HubInput extends LitElement {
       min-width: 240px;
       box-sizing: border-box;
       width: 100%;
+      -webkit-appearance: none;
+      -moz-appearance: none;
     }
 
     input:focus {
