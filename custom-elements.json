@@ -1,0 +1,1468 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/localization.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "{ getLocale, setLocale }"
+        },
+        {
+          "kind": "function",
+          "name": "initLocalization"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "{ getLocale, setLocale }",
+          "declaration": {
+            "name": "{ getLocale, setLocale }",
+            "module": "src/localization.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "initLocalization",
+          "declaration": {
+            "name": "initLocalization",
+            "module": "src/localization.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/main.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./ui/index\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./common/index\""
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/generated/locale-codes.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "sourceLocale",
+          "default": "`tr`",
+          "description": "The locale code that templates in this source code are written in."
+        },
+        {
+          "kind": "variable",
+          "name": "targetLocales",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ `en`, ]",
+          "description": "The other locale codes that this application is localized into. Sorted\nlexicographically."
+        },
+        {
+          "kind": "variable",
+          "name": "allLocales",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ `en`, `tr`, ]",
+          "description": "All valid project locale codes. Sorted lexicographically."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "sourceLocale",
+          "declaration": {
+            "name": "sourceLocale",
+            "module": "src/generated/locale-codes.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "targetLocales",
+          "declaration": {
+            "name": "targetLocales",
+            "module": "src/generated/locale-codes.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "allLocales",
+          "declaration": {
+            "name": "allLocales",
+            "module": "src/generated/locale-codes.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/service/department.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "DepartmentService",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getDepartments",
+              "static": true,
+              "return": {
+                "type": {
+                  "text": "Array<{value: string, label: string}>"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DepartmentService",
+          "declaration": {
+            "name": "DepartmentService",
+            "module": "src/service/department.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/service/position.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PositionService",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getPositions",
+              "static": true,
+              "return": {
+                "type": {
+                  "text": "Array<{value: string, label: string}>"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PositionService",
+          "declaration": {
+            "name": "PositionService",
+            "module": "src/service/position.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/views/add.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Add",
+          "members": [
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hub-add-view",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Add",
+          "declaration": {
+            "name": "Add",
+            "module": "src/views/add.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "hub-add-view",
+          "declaration": {
+            "name": "Add",
+            "module": "src/views/add.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/views/edit.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Edit",
+          "members": [
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hub-edit-view",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Edit",
+          "declaration": {
+            "name": "Edit",
+            "module": "src/views/edit.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "hub-edit-view",
+          "declaration": {
+            "name": "Edit",
+            "module": "src/views/edit.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/views/home.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Home",
+          "members": [
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hub-home-view",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Home",
+          "declaration": {
+            "name": "Home",
+            "module": "src/views/home.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "hub-home-view",
+          "declaration": {
+            "name": "Home",
+            "module": "src/views/home.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/views/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./home\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./add\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./edit\""
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/styles/base.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "baseStyles",
+          "default": "css` * { box-sizing: border-box; } a { text-decoration: none; } `"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "baseStyles",
+          "declaration": {
+            "name": "baseStyles",
+            "module": "src/styles/base.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/generated/locales/en.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "templates",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ 's0fde0eea9134fc83': `Please enter something`, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "templates",
+          "declaration": {
+            "name": "templates",
+            "module": "src/generated/locales/en.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ui/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./input/HubInput\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./form-field/HubFormField\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./icon/HubIcon\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./container/HubContainer\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./select/HubSelect\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./button/HubButton\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./table/HubTable\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./pagination/HubPagination\""
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/common/index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./navbar/HubNavbar\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./employee-form/HubEmployeeForm\""
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "\"./employee-list/HubEmployeeList\""
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ui/button/HubButton.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HubButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ type: { type: String }, disabled: { type: Boolean }, label: { type: String }, /** * @type { \"default\" | \"transparent\" | \"icon\" } */ variant: { type: String }, }"
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "type": {
+                "text": "array"
+              },
+              "static": true,
+              "default": "[ baseStyles, css` button { background-color: var(--primary-color); color: #fff; padding: 10px 20px; border: none; border-radius: var(--input-radius); color: #fff; font-weight: 600; cursor: pointer; transition: opacity 0.2s ease; } button.transparent { background-color: transparent; color: var(--primary-color); } button.icon { background-color: transparent; width: 40px; height: 40px; padding: 0; color: var(--primary-color); } button:disabled { opacity: 0.5; cursor: not-allowed; } `, ]"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"button\""
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"default\""
+            }
+          ],
+          "events": [
+            {
+              "name": "button-click",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hub-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HubButton",
+          "declaration": {
+            "name": "HubButton",
+            "module": "src/components/ui/button/HubButton.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "hub-button",
+          "declaration": {
+            "name": "HubButton",
+            "module": "src/components/ui/button/HubButton.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ui/form-field/HubFormField.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HubFormField",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ label: { type: String }, error: { type: String }, }"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` .form-field { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; } .error { color: red; margin: 0; } `"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hub-form-field",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HubFormField",
+          "declaration": {
+            "name": "HubFormField",
+            "module": "src/components/ui/form-field/HubFormField.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "hub-form-field",
+          "declaration": {
+            "name": "HubFormField",
+            "module": "src/components/ui/form-field/HubFormField.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ui/pagination/HubPagination.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HubPagination",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ /** * Current page number (1-based) */ currentPage: { type: Number }, /** * Total number of pages */ totalPages: { type: Number }, /** * Number of page buttons to show */ visiblePages: { type: Number }, /** * Whether to show the first/last page buttons */ showFirstLast: { type: Boolean }, /** * Whether to show the previous/next page buttons */ showPrevNext: { type: Boolean }, /** * Whether to disable the component */ disabled: { type: Boolean }, }"
+            },
+            {
+              "kind": "method",
+              "name": "_handlePageChange",
+              "parameters": [
+                {
+                  "name": "page"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_getVisiblePageNumbers"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "type": {
+                "text": "array"
+              },
+              "static": true,
+              "default": "[ baseStyles, css` :host { display: block; } .pagination { display: flex; justify-content: center; margin: 16px 0; } .pagination.disabled { opacity: 0.6; pointer-events: none; } ul { display: flex; list-style: none; padding: 0; margin: 0; gap: 4px; } .page-button { display: flex; align-items: center; justify-content: center; min-width: 36px; height: 36px; padding: 0 8px; border: 1px solid var(--color-border, #e0e0e0); background-color: var(--color-background, #ffffff); color: var(--color-text, #333333); border-radius: 4px; cursor: pointer; font-size: 14px; transition: all 0.2s ease; } .page-button:hover:not(:disabled):not(.active) { background-color: var(--color-hover, #f0f0f0); } .page-button:disabled { opacity: 0.5; cursor: not-allowed; } .page-button.active { background-color: var(--color-primary, #2196f3); color: var(--color-on-primary, #ffffff); border-color: var(--color-primary, #2196f3); } .first, .last, .prev, .next { font-weight: bold; } `, ]"
+            },
+            {
+              "kind": "field",
+              "name": "currentPage",
+              "type": {
+                "text": "number"
+              },
+              "default": "1"
+            },
+            {
+              "kind": "field",
+              "name": "totalPages",
+              "type": {
+                "text": "number"
+              },
+              "default": "1"
+            },
+            {
+              "kind": "field",
+              "name": "visiblePages",
+              "type": {
+                "text": "number"
+              },
+              "default": "5"
+            },
+            {
+              "kind": "field",
+              "name": "showFirstLast",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "showPrevNext",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "events": [
+            {
+              "name": "page-change",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hub-pagination",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HubPagination",
+          "declaration": {
+            "name": "HubPagination",
+            "module": "src/components/ui/pagination/HubPagination.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "hub-pagination",
+          "declaration": {
+            "name": "HubPagination",
+            "module": "src/components/ui/pagination/HubPagination.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ui/container/HubContainer.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HubContainer",
+          "members": [
+            {
+              "kind": "method",
+              "name": "render"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "type": {
+                "text": "array"
+              },
+              "static": true,
+              "default": "[ baseStyles, css` .container { width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; } @media (min-width: 576px) { .container { max-width: 540px; } } @media (min-width: 768px) { .container { max-width: 720px; } } @media (min-width: 992px) { .container { max-width: 960px; } } @media (min-width: 1200px) { .container { max-width: 1140px; } } `, ]"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hub-container",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HubContainer",
+          "declaration": {
+            "name": "HubContainer",
+            "module": "src/components/ui/container/HubContainer.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "hub-container",
+          "declaration": {
+            "name": "HubContainer",
+            "module": "src/components/ui/container/HubContainer.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ui/select/HubSelect.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HubSelect",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleChange",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` select { position: relative; outline: 0 none; border: 1px solid #d0d0d0; border-radius: var(--input-radius); padding: 0 10px; height: 40px; resize: none; vertical-align: middle; font-size: 14px; line-height: 40px; min-width: 240px; box-sizing: border-box; width: 100%; } `"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            }
+          ],
+          "events": [
+            {
+              "name": "value-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hub-select",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HubSelect",
+          "declaration": {
+            "name": "HubSelect",
+            "module": "src/components/ui/select/HubSelect.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "hub-select",
+          "declaration": {
+            "name": "HubSelect",
+            "module": "src/components/ui/select/HubSelect.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ui/table/HubTable.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HubTable",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ /** * Array of column definitions * @type {Array<{id: string, label: string, width: string}>} */ columns: { type: Array }, /** * Array of data objects to display in the table * @type {Array<Object>} */ data: { type: Array }, }"
+            },
+            {
+              "kind": "method",
+              "name": "_renderHeader"
+            },
+            {
+              "kind": "method",
+              "name": "_renderBody"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "type": {
+                "text": "array"
+              },
+              "static": true,
+              "default": "[ baseStyles, css` :host { display: block; } .table-container { width: 100%; overflow-x: auto; } table { width: 100%; border-collapse: collapse; font-size: 14px; } th { text-align: left; padding: 12px 16px; font-weight: 600; border-bottom: 2px solid var(--color-border, #e0e0e0); white-space: nowrap; } td { padding: 12px 16px; border-bottom: 1px solid var(--color-border, #e0e0e0); } .bordered th, .bordered td { border: 1px solid var(--color-border, #e0e0e0); } .striped tbody tr:nth-child(odd) { background-color: var(--color-background-alt, #f9f9f9); } .hoverable tbody tr:hover { background-color: var(--color-hover, #f0f0f0); } .loading, .empty { text-align: center; padding: 24px; color: var(--color-text-secondary, #757575); } .loading-indicator { display: inline-block; } `, ]"
+            },
+            {
+              "kind": "field",
+              "name": "columns",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "data",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hub-table",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HubTable",
+          "declaration": {
+            "name": "HubTable",
+            "module": "src/components/ui/table/HubTable.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "hub-table",
+          "declaration": {
+            "name": "HubTable",
+            "module": "src/components/ui/table/HubTable.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/common/employee-list/HubEmployeeList.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HubEmployeeList",
+          "members": [
+            {
+              "kind": "method",
+              "name": "render"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "type": {
+                "text": "array"
+              },
+              "static": true,
+              "default": "[ baseStyles, css` h1 { margin: 0; font-size: 2rem; font-weight: 300; color: var(--primary-color); } section { padding: 2rem 0; } .header { display: flex; justify-content: space-between; align-items: center; } `, ]"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hub-employee-list",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HubEmployeeList",
+          "declaration": {
+            "name": "HubEmployeeList",
+            "module": "src/components/common/employee-list/HubEmployeeList.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "hub-employee-list",
+          "declaration": {
+            "name": "HubEmployeeList",
+            "module": "src/components/common/employee-list/HubEmployeeList.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/common/navbar/HubNavbar.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HubNavbar",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ title: { type: String }, _mobileMenuOpen: { type: Boolean }, }"
+            },
+            {
+              "kind": "field",
+              "name": "links",
+              "type": {
+                "text": "array"
+              },
+              "default": "[ { label: \"Employee\", href: \"/\", icon: \"user\", }, { label: \"Add New\", href: \"/add\", icon: \"plus\", }, ]"
+            },
+            {
+              "kind": "method",
+              "name": "toggleMobileMenu"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "type": {
+                "text": "array"
+              },
+              "static": true,
+              "default": "[ baseStyles, css` nav { background-color: #fff; height: 60px; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; position: relative; } .home { display: flex; align-items: center; gap: 10px; color: #000; } .start, .end { display: flex; align-items: center; gap: 10px; } .title { margin: 0; font-size: 1.2rem; font-weight: 600; } .end a { display: flex; align-items: center; gap: 10px; color: var(--primary-color); text-decoration: none; padding: 8px 12px; border-radius: 4px; transition: background-color 0.2s; } .end a:hover { background-color: rgba(0, 0, 0, 0.05); } .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--primary-color); padding: 8px; } @media (max-width: 768px) { .mobile-menu-toggle { display: flex; align-items: center; justify-content: center; } .end { position: absolute; top: 60px; right: 0; flex-direction: column; background-color: white; width: 100%; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); z-index: 100; padding: 0; align-items: flex-start; } .end.mobile-open { max-height: 300px; padding: 10px 0; } .end a { width: 100%; padding: 12px 20px; border-radius: 0; } } `, ]"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"ING\""
+            },
+            {
+              "kind": "field",
+              "name": "_mobileMenuOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hub-navbar",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HubNavbar",
+          "declaration": {
+            "name": "HubNavbar",
+            "module": "src/components/common/navbar/HubNavbar.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "hub-navbar",
+          "declaration": {
+            "name": "HubNavbar",
+            "module": "src/components/common/navbar/HubNavbar.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ui/input/HubInput.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HubInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ name: { type: String }, block: { type: Boolean }, type: { type: String }, value: { type: String }, }"
+            },
+            {
+              "kind": "method",
+              "name": "_handleInput",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` input { position: relative; outline: 0 none; border: 1px solid #d0d0d0; border-radius: var(--input-radius); padding: 0 10px; height: 40px; resize: none; vertical-align: middle; font-size: 14px; line-height: 40px; min-width: 240px; box-sizing: border-box; width: 100%; } `"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "block",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"text\""
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            }
+          ],
+          "events": [
+            {
+              "name": "value-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hub-input",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HubInput",
+          "declaration": {
+            "name": "HubInput",
+            "module": "src/components/ui/input/HubInput.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "hub-input",
+          "declaration": {
+            "name": "HubInput",
+            "module": "src/components/ui/input/HubInput.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/common/employee-form/HubEmployeeForm.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HubEmployeeForm",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ employee: { type: Object }, errors: { type: Object }, departments: { type: Array }, positions: { type: Array }, }"
+            },
+            {
+              "kind": "method",
+              "name": "firstUpdated"
+            },
+            {
+              "kind": "method",
+              "name": "_handleValueChanged",
+              "parameters": [
+                {
+                  "name": "event"
+                },
+                {
+                  "name": "field"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_validateField",
+              "parameters": [
+                {
+                  "name": "field"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_validateForm"
+            },
+            {
+              "kind": "method",
+              "name": "_handleSubmit",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "type": {
+                "text": "array"
+              },
+              "static": true,
+              "default": "[ baseStyles, css` .form-container { padding: 2rem; background-color: #fff; max-width: 500px; margin: 2rem auto; } .form-footer { display: flex; justify-content: flex-end; } h1 { margin-top: 0; font-size: 2rem; font-weight: 300; margin-bottom: 2rem; color: var(--primary-color); } .error-message { color: red; margin-bottom: 1rem; } `, ]"
+            },
+            {
+              "kind": "field",
+              "name": "employee",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ firstName: \"\", lastName: \"\", dateOfEmployment: \"\", dateOfBirth: \"\", phoneNumber: \"\", email: \"\", department: \"\", position: \"\", }"
+            },
+            {
+              "kind": "field",
+              "name": "errors",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "departments",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "positions",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hub-employee-form",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HubEmployeeForm",
+          "declaration": {
+            "name": "HubEmployeeForm",
+            "module": "src/components/common/employee-form/HubEmployeeForm.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "hub-employee-form",
+          "declaration": {
+            "name": "HubEmployeeForm",
+            "module": "src/components/common/employee-form/HubEmployeeForm.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ui/icon/HubIcon.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HubIcon",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ name: { type: String }, }"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: inline-block; } `"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hub-icon",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "hub-icon",
+          "declaration": {
+            "name": "HubIcon",
+            "module": "src/components/ui/icon/HubIcon.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ui/icon/list.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "iconList",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ user: html`<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-user\" > <path d=\"M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2\" /> <circle cx=\"12\" cy=\"7\" r=\"4\" /> </svg>`, plus: html`<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-plus\" > <path d=\"M5 12h14\" /> <path d=\"M12 5v14\" /> </svg>`, menu: html`<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-menu\" > <line x1=\"4\" x2=\"20\" y1=\"12\" y2=\"12\" /> <line x1=\"4\" x2=\"20\" y1=\"6\" y2=\"6\" /> <line x1=\"4\" x2=\"20\" y1=\"18\" y2=\"18\" /> </svg>`, x: html`<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-x\" > <path d=\"M18 6 6 18\" /> <path d=\"m6 6 12 12\" /> </svg>`, grid: html`<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-grid-2x2\" > <path d=\"M12 3v18\" /> <path d=\"M3 12h18\" /> <rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\" /> </svg>`, }"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "iconList",
+          "declaration": {
+            "name": "iconList",
+            "module": "src/components/ui/icon/list.js"
+          }
+        }
+      ]
+    }
+  ]
+}
