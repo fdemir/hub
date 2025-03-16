@@ -3,8 +3,8 @@ import { baseStyles } from "../../../styles/base";
 import { z } from "zod";
 import { DepartmentService } from "../../../services/department";
 import { PositionService } from "../../../services/position";
-import { Router } from "@vaadin/router";
-
+import { msg } from "@lit/localize";
+import { updateWhenLocaleChanges } from "@lit/localize";
 const employeeForm = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
@@ -56,6 +56,7 @@ export class HubEmployeeForm extends LitElement {
     this.departments = [];
     this.positions = [];
     this.mode = "add";
+    updateWhenLocaleChanges(this);
   }
 
   async firstUpdated() {
@@ -118,11 +119,11 @@ export class HubEmployeeForm extends LitElement {
   }
 
   get title() {
-    return this.mode === "add" ? "Add Employee" : "Edit Employee";
+    return this.mode === "add" ? msg("Add Employee") : msg("Edit Employee");
   }
 
   get buttonText() {
-    return this.mode === "add" ? "Add" : "Update";
+    return this.mode === "add" ? msg("Add") : msg("Update");
   }
 
   render() {
@@ -131,14 +132,20 @@ export class HubEmployeeForm extends LitElement {
         <h1>${this.title}</h1>
 
         <form @submit=${this._handleSubmit}>
-          <hub-form-field label="First Name" .error=${this.errors.firstName}>
+          <hub-form-field
+            label=${msg("First Name")}
+            .error=${this.errors.firstName}
+          >
             <hub-input
               name="firstName"
               .value=${this.employee.firstName}
               @value-changed=${(e) => this._handleValueChanged(e, "firstName")}
             ></hub-input>
           </hub-form-field>
-          <hub-form-field label="Last Name" .error=${this.errors.lastName}>
+          <hub-form-field
+            label=${msg("Last Name")}
+            .error=${this.errors.lastName}
+          >
             <hub-input
               name="lastName"
               .value=${this.employee.lastName}
@@ -146,7 +153,7 @@ export class HubEmployeeForm extends LitElement {
             ></hub-input>
           </hub-form-field>
           <hub-form-field
-            label="Date of Employment"
+            label=${msg("Date of Employment")}
             .error=${this.errors.dateOfEmployment}
           >
             <hub-input
@@ -158,7 +165,7 @@ export class HubEmployeeForm extends LitElement {
             ></hub-input>
           </hub-form-field>
           <hub-form-field
-            label="Date of Birth"
+            label=${msg("Date of Birth")}
             .error=${this.errors.dateOfBirth}
           >
             <hub-input
@@ -170,7 +177,7 @@ export class HubEmployeeForm extends LitElement {
             ></hub-input>
           </hub-form-field>
           <hub-form-field
-            label="Phone Number"
+            label=${msg("Phone Number")}
             .error=${this.errors.phoneNumber}
           >
             <hub-input
@@ -181,7 +188,10 @@ export class HubEmployeeForm extends LitElement {
                 this._handleValueChanged(e, "phoneNumber")}
             ></hub-input>
           </hub-form-field>
-          <hub-form-field label="Email Address" .error=${this.errors.email}>
+          <hub-form-field
+            label=${msg("Email Address")}
+            .error=${this.errors.email}
+          >
             <hub-input
               name="email"
               type="email"
@@ -189,7 +199,10 @@ export class HubEmployeeForm extends LitElement {
               @value-changed=${(e) => this._handleValueChanged(e, "email")}
             ></hub-input>
           </hub-form-field>
-          <hub-form-field label="Department" .error=${this.errors.department}>
+          <hub-form-field
+            label=${msg("Department")}
+            .error=${this.errors.department}
+          >
             <hub-select
               name="department"
               .options=${this.departments}
@@ -197,7 +210,10 @@ export class HubEmployeeForm extends LitElement {
               @value-changed=${(e) => this._handleValueChanged(e, "department")}
             ></hub-select>
           </hub-form-field>
-          <hub-form-field label="Position" .error=${this.errors.position}>
+          <hub-form-field
+            label=${msg("Position")}
+            .error=${this.errors.position}
+          >
             <hub-select
               name="position"
               .options=${this.positions}

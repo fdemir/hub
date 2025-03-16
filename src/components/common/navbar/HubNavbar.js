@@ -1,5 +1,7 @@
 import { LitElement, html, css } from "lit";
 import { baseStyles } from "../../../styles/base";
+import { updateWhenLocaleChanges } from "@lit/localize";
+import { msg } from "@lit/localize";
 
 export class HubNavbar extends LitElement {
   static properties = {
@@ -7,27 +9,30 @@ export class HubNavbar extends LitElement {
     _mobileMenuOpen: { type: Boolean },
   };
 
-  links = [
-    {
-      label: "Employee",
-      href: "/",
-      icon: "user",
-    },
-    {
-      label: "Add New",
-      href: "/add",
-      icon: "plus",
-    },
-  ];
-
   constructor() {
     super();
     this.title = "ING";
     this._mobileMenuOpen = false;
+    updateWhenLocaleChanges(this);
   }
 
   toggleMobileMenu() {
     this._mobileMenuOpen = !this._mobileMenuOpen;
+  }
+
+  get links() {
+    return [
+      {
+        label: msg("Employee"),
+        href: "/",
+        icon: "user",
+      },
+      {
+        label: msg("Add New"),
+        href: "/add",
+        icon: "plus",
+      },
+    ];
   }
 
   render() {
@@ -54,6 +59,7 @@ export class HubNavbar extends LitElement {
             ${link.label}
           </a>`
         )}
+        <hub-locale-selector></hub-locale-selector>
       </div>
     </nav>`;
   }

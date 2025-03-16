@@ -8,6 +8,8 @@ import { repeat } from "lit/directives/repeat.js";
 import { Router } from "@vaadin/router";
 import { Task } from "@lit/task";
 import { errorMessages } from "../../../error";
+import { msg } from "@lit/localize";
+import { updateWhenLocaleChanges } from "@lit/localize";
 
 export class HubEmployeeList extends connect(store)(LitElement) {
   static properties = {
@@ -26,6 +28,7 @@ export class HubEmployeeList extends connect(store)(LitElement) {
 
   constructor() {
     super();
+    updateWhenLocaleChanges(this);
     this.totalPages = 0;
     this.currentPage = 1;
     this.selectedEmployeeList = [];
@@ -107,7 +110,7 @@ export class HubEmployeeList extends connect(store)(LitElement) {
       .map((id) => {
         const employee = this.employees.find((e) => e.id === id);
         if (!employee) {
-          return "Employee not found";
+          return msg("Employee not found");
         }
         return `${employee.firstName} ${employee.lastName}`;
       })
@@ -130,10 +133,10 @@ export class HubEmployeeList extends connect(store)(LitElement) {
   render() {
     return html`
       <hub-dialog
-        title="Are you sure?"
+        title=${msg("Are you sure?")}
         message=${this.dialogMessage}
-        approveText="Delete"
-        cancelText="Cancel"
+        approveText=${msg("Delete")}
+        cancelText=${msg("Cancel")}
         @close=${this.handleDialogCancel}
         .open=${this.deleteDialogOpen}
         @approve=${this.handleDialogApprove}
@@ -146,11 +149,11 @@ export class HubEmployeeList extends connect(store)(LitElement) {
           html` ${this.view === "list"
             ? html` <hub-table
                 .columns=${[
-                  { id: "firstName", label: "First Name" },
-                  { id: "lastName", label: "Last Name" },
+                  { id: "firstName", label: msg("First Name") },
+                  { id: "lastName", label: msg("Last Name") },
                   {
                     id: "dateOfEmployment",
-                    label: "Date of Employment",
+                    label: msg("Date of Employment"),
                     cell: (data) =>
                       html`${new Date(
                         data.dateOfEmployment
@@ -158,17 +161,17 @@ export class HubEmployeeList extends connect(store)(LitElement) {
                   },
                   {
                     id: "dateOfBirth",
-                    label: "Date of Birth",
+                    label: msg("Date of Birth"),
                     cell: (data) =>
                       html`${new Date(data.dateOfBirth).toLocaleDateString()}`,
                   },
-                  { id: "phone", label: "Phone" },
-                  { id: "email", label: "Email" },
-                  { id: "department", label: "Department" },
-                  { id: "position", label: "Position" },
+                  { id: "phone", label: msg("Phone") },
+                  { id: "email", label: msg("Email") },
+                  { id: "department", label: msg("Department") },
+                  { id: "position", label: msg("Position") },
                   {
                     id: "actions",
-                    label: "Actions",
+                    label: msg("Actions"),
                     cell: (data) => this.actionTemplate(data),
                   },
                 ]}

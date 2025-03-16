@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { baseStyles } from "../../../styles/base";
-
+import { updateWhenLocaleChanges } from "@lit/localize";
 export class HubDialog extends LitElement {
   static properties = {
     title: { type: String },
@@ -17,6 +17,7 @@ export class HubDialog extends LitElement {
     this.open = false;
     this.approveText = "Approve";
     this.cancelText = "Cancel";
+    updateWhenLocaleChanges(this);
   }
 
   show() {

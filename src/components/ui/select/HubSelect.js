@@ -13,6 +13,7 @@ export class HubSelect extends LitElement {
       value: { type: String, reflect: true },
       block: { type: Boolean },
       open: { type: Boolean, state: true },
+      noDefaultOption: { type: Boolean },
     };
   }
 
@@ -25,6 +26,7 @@ export class HubSelect extends LitElement {
     this.value = "";
     this.open = false;
     this.block = false;
+    this.noDefaultOption = false;
   }
 
   _handleSelect(value, label) {
@@ -71,29 +73,33 @@ export class HubSelect extends LitElement {
   render() {
     return html`
       <div class="custom-select ${this.block ? "block" : ""}">
-        <div
-          class="select-selected ${this.open ? "active" : ""}"
-          @click="${this._toggleDropdown}"
-          tabindex="0"
-          role="combobox"
-          aria-expanded="${this.open}"
-          aria-haspopup="listbox"
-        >
-          ${this._getSelectedLabel()}
-          <span class="select-arrow"></span>
-        </div>
+        <slot name="trigger" @click="${this._toggleDropdown}">
+          <div
+            class="select-selected ${this.open ? "active" : ""}"
+            tabindex="0"
+            role="combobox"
+            aria-expanded="${this.open}"
+            aria-haspopup="listbox"
+          >
+            ${this._getSelectedLabel()}
+            <span class="select-arrow"></span>
+          </div>
+        </slot>
         <div
           class="select-items ${this.open ? "select-show" : "select-hide"}"
           role="listbox"
         >
-          <div
-            class="select-item"
-            @click="${() => this._handleSelect("", msg("Select an option"))}"
-            role="option"
-            aria-selected="${!this.value}"
-          >
-            ${msg("Select an option")}
-          </div>
+          ${!this.noDefaultOption
+            ? html` <div
+                class="select-item"
+                @click="${() =>
+                  this._handleSelect("", msg("Select an option"))}"
+                role="option"
+                aria-selected="${!this.value}"
+              >
+                ${msg("Select an option")}
+              </div>`
+            : ""}
           ${this.options.length > 0
             ? repeat(
                 this.options,
@@ -111,7 +117,7 @@ export class HubSelect extends LitElement {
                     ${option.label}
                   </div>`
               )
-            : html`<slot></slot>`}
+            : html`<slot name="options"></slot>`}
         </div>
         <input type="hidden" name="${this.name}" .value="${this.value}" />
       </div>
@@ -121,7 +127,6 @@ export class HubSelect extends LitElement {
   static styles = css`
     .custom-select {
       position: relative;
-      min-width: 240px;
       box-sizing: border-box;
       font-size: 16px;
     }
@@ -145,6 +150,7 @@ export class HubSelect extends LitElement {
       width: 100%;
       cursor: pointer;
       user-select: none;
+      min-width: 240px;
     }
 
     .select-selected:focus,
@@ -178,6 +184,7 @@ export class HubSelect extends LitElement {
       max-height: 300px;
       overflow-y: auto;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
     }
 
     .select-item {

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<file target-language="tr" source-language="en" original="lit-localize-inputs" datatype="plaintext">
+<body>
+<trans-unit id="sd2223afb7d6b100d">
+  <source>Type</source>
+  <target>Bir şeyler yazın</target>
+</trans-unit>
+<trans-unit id="s25e9354649777c55">
+  <source>Select an option</source>
+  <target>Bir seçenek belirleyin</target>
+</trans-unit>
+<trans-unit id="s3db6c3999daeecdb">
+  <source>Employee List</source>
+  <target>Çalışan Listesi</target>
+</trans-unit>
+<trans-unit id="s8a9fa9684ba37683">
+  <source>Edit Employee</source>
+  <target>Çalışanı Düzenle</target>
+</trans-unit>
+<trans-unit id="sf323e9642e2df5a2">
+  <source>Are you sure you want to edit this employee?</source>
+  <target>Bu çalışanı düzenlemek istediğinizden emin misiniz?</target>
+</trans-unit>
+<trans-unit id="se9404b382b736041">
+  <source>Employee</source>
+  <target>Çalışan</target>
+</trans-unit>
+<trans-unit id="s4ec58dc6a75753da">
+  <source>Add New</source>
+  <target>Yeni Ekle</target>
+</trans-unit>
+<trans-unit id="s5d929ff1619ac0c9">
+  <source>Search</source>
+  <target>Ara</target>
+</trans-unit>
+<trans-unit id="s4c6ae931a152b900">
+  <source>Employee not found</source>
+  <target>Çalışan bulunamadı</target>
+</trans-unit>
+<trans-unit id="s268ecd1cef45a9a8">
+  <source>Are you sure?</source>
+  <target>Emin misiniz?</target>
+</trans-unit>
+<trans-unit id="sdc673e73b5c13aea">
+  <source>Delete</source>
+  <target>Sil</target>
+</trans-unit>
+<trans-unit id="s2ceb11be2290bb1b">
+  <source>Cancel</source>
+  <target>İptal</target>
+</trans-unit>
+<trans-unit id="s2c57913ffd36d298">
+  <source>First Name</source>
+  <target>Ad</target>
+</trans-unit>
+<trans-unit id="s95a75a2392af5780">
+  <source>Last Name</source>
+  <target>Soyadı</target>
+</trans-unit>
+<trans-unit id="s772528836550622c">
+  <source>Date of Employment</source>
+  <target>İşe Başlama Tarihi</target>
+</trans-unit>
+<trans-unit id="s53802e3f37d072a7">
+  <source>Date of Birth</source>
+  <target>Doğum Tarihi</target>
+</trans-unit>
+<trans-unit id="sf1bc83d2509bafcf">
+  <source>Phone</source>
+  <target>Telefon</target>
+</trans-unit>
+<trans-unit id="sd1f44f1a8bc20e67">
+  <source>Email</source>
+  <target>Email</target>
+</trans-unit>
+<trans-unit id="s1e45a4d7635fbda7">
+  <source>Department</source>
+  <target>Departman</target>
+</trans-unit>
+<trans-unit id="sc1611c0558728a2a">
+  <source>Position</source>
+  <target>Pozisyon</target>
+</trans-unit>
+<trans-unit id="s8af61807443f32a4">
+  <source>Actions</source>
+  <target>İşlemler</target>
+</trans-unit>
+<trans-unit id="s32c9b3dd030fc24c">
+  <source>Add Employee</source>
+  <target>Çalışan Ekle</target>
+</trans-unit>
+<trans-unit id="sf9aee319a006c9b4">
+  <source>Add</source>
+  <target>Ekle</target>
+</trans-unit>
+<trans-unit id="s8b0432eecbd8b034">
+  <source>Update</source>
+  <target>Güncelle</target>
+</trans-unit>
+<trans-unit id="s871b1fe6d1846958">
+  <source>Phone Number</source>
+  <target>Telefon Numarası</target>
+</trans-unit>
+<trans-unit id="s1e2e135dac5ba993">
+  <source>Email Address</source>
+  <target>Email Adresi</target>
+</trans-unit>
+</body>
+</file>
+</xliff>

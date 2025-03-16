@@ -2,6 +2,9 @@ import { LitElement, html, css } from "lit";
 import { baseStyles } from "../styles/base";
 import { setSearchQuery } from "../store/employee";
 import { store } from "../store/app";
+import { msg } from "@lit/localize";
+import { updateWhenLocaleChanges } from "@lit/localize";
+
 export class Home extends LitElement {
   static get properties() {
     return {
@@ -14,6 +17,7 @@ export class Home extends LitElement {
 
   constructor() {
     super();
+    updateWhenLocaleChanges(this);
     this.view = "list";
   }
 
@@ -29,7 +33,7 @@ export class Home extends LitElement {
     return html`<hub-container>
       <section>
         <div class="header">
-          <h1>Employee List</h1>
+          <h1>${msg("Employee List")}</h1>
           <div class="actions">
             <hub-button
               variant="icon"
@@ -39,10 +43,9 @@ export class Home extends LitElement {
             </hub-button>
             ${this.searchVisible
               ? html`<hub-input
-                  label="Search"
                   @value-changed=${this.handleSearch}
                   type="search"
-                  placeholder="Search"
+                  placeholder=${msg("Search")}
                 ></hub-input>`
               : ""}
             <hub-button variant="icon" @click=${() => (this.view = "list")}>
