@@ -5,11 +5,7 @@ export const { getLocale, setLocale } = configureLocalization({
   sourceLocale,
   targetLocales,
   loadLocale: (locale) => {
-    return import(
-      // THIS IS INTENDED. VITE CANNOT ANALYZE THE TARGET PATH. NOT A PROBLEM.
-      /* @vite-ignore */
-      `/src/generated/locales/${locale}.js`
-    );
+    return import(`./generated/locales/${locale}.js`);
   },
 });
 
