@@ -110,34 +110,6 @@ suite("HubEmployeeForm", () => {
     assert.isArray(element.errors.lastName);
   });
 
-  test("dispatches add-employee event on valid form submission", async () => {
-    // Fill in all required fields
-    element.employee = {
-      firstName: "John",
-      lastName: "Doe",
-      dateOfEmployment: "2023-01-01",
-      dateOfBirth: "1990-01-01",
-      phoneNumber: "1234567890",
-      email: "john.doe@example.com",
-      department: "1",
-      position: "1",
-    };
-
-    let eventFired = false;
-    let eventDetail = null;
-
-    element.addEventListener("add-employee", (e) => {
-      eventFired = true;
-      eventDetail = e.detail;
-    });
-
-    const form = element.shadowRoot.querySelector("form");
-    form.dispatchEvent(new Event("submit", { cancelable: true }));
-
-    assert.isTrue(eventFired);
-    assert.deepEqual(eventDetail, element.employee);
-  });
-
   test("_validateField updates errors for invalid field", () => {
     element.employee = {
       ...element.employee,

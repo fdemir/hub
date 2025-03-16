@@ -54,24 +54,24 @@ export class HubEmployeeCard extends LitElement {
           </hub-button>
         </div>
       </div>
-      <div class="employee-info">
+      <div class="employee-info" data-testid="employee-info">
         <div class="employee-name">
           <span>${this.employee.firstName} ${this.employee.lastName}</span>
         </div>
-        <div class="employee-department">
+        <div class="employee-department" data-testid="employee-department">
           <span>${this.employee.department} / ${this.employee.position}</span>
         </div>
-        <div class="employee-phone">
+        <div class="employee-phone" data-testid="employee-phone">
           <span>Tel: ${this.employee.phoneNumber}</span>
         </div>
-        <div class="employee-email">
+        <div class="employee-email" data-testid="employee-email">
           <span>${this.employee.email}</span>
         </div>
-        <div class="employee-joined-date">
+        <div class="employee-joined-date" data-testid="employee-joined-date">
           Joined
           ${new Date(this.employee.dateOfEmployment).toLocaleDateString()}
         </div>
-        <div class="employee-birthday">
+        <div class="employee-birthday" data-testid="employee-birthday">
           Birthday ${new Date(this.employee.dateOfBirth).toLocaleDateString()}
         </div>
       </div>
