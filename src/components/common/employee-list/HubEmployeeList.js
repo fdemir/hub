@@ -7,6 +7,7 @@ import { EmployeeService } from "../../../services/employee";
 import { repeat } from "lit/directives/repeat.js";
 import { Router } from "@vaadin/router";
 import { Task } from "@lit/task";
+import { errorMessages } from "../../../error";
 
 export class HubEmployeeList extends connect(store)(LitElement) {
   static properties = {
@@ -15,6 +16,7 @@ export class HubEmployeeList extends connect(store)(LitElement) {
     currentPage: { type: Number },
     selectedEmployeeList: { type: Array },
     deleteDialogOpen: { type: Boolean },
+    searchQuery: { type: String },
 
     /**
      * @type {"list" | "grid"}
@@ -29,16 +31,22 @@ export class HubEmployeeList extends connect(store)(LitElement) {
     this.selectedEmployeeList = [];
     this.deleteDialogOpen = false;
     this.view = "list";
+    this.searchQuery = "";
   }
 
   stateChanged(state) {
     this.employees = state.employee.employees;
+    this.searchQuery = state.employee.searchQuery;
   }
 
   _fetchEmployeesTask = new Task(this, {
-    args: () => [this.currentPage],
-    task: async ([page]) => {
-      const employees = await EmployeeService.getEmployees(page);
+    args: () => [this.currentPage, this.searchQuery],
+    task: async ([page, searchQuery]) => {
+      const employees = await EmployeeService.getEmployees(
+        page,
+        10,
+        searchQuery
+      );
       this.totalPages = employees.totalPages;
       this.currentPage = employees.currentPage;
       store.dispatch(setEmployees(employees.data));
@@ -120,7 +128,7 @@ export class HubEmployeeList extends connect(store)(LitElement) {
   }
 
   render() {
-    return html`<hub-container>
+    return html`
       <hub-dialog
         title="Are you sure?"
         message=${this.dialogMessage}
@@ -131,20 +139,6 @@ export class HubEmployeeList extends connect(store)(LitElement) {
         @approve=${this.handleDialogApprove}
       >
       </hub-dialog>
-
-      <section>
-        <div class="header">
-          <h1>Employee List</h1>
-          <div class="actions">
-            <hub-button variant="icon" @click=${() => (this.view = "list")}>
-              <hub-icon name="menu"></hub-icon>
-            </hub-button>
-            <hub-button variant="icon" @click=${() => (this.view = "grid")}>
-              <hub-icon name="grid"></hub-icon>
-            </hub-button>
-          </div>
-        </div>
-      </section>
 
       ${this._fetchEmployeesTask.render({
         pending: () => html`<hub-spinner></hub-spinner>`,
@@ -203,45 +197,24 @@ export class HubEmployeeList extends connect(store)(LitElement) {
                 </div>
               `}`,
 
-        error: (error) =>
-          html`<span
+        error: (error) => {
+          console.log(error);
+          return html`<span
             >Error: ${errorMessages?.[error.message] || "Unknown error"}</span
-          >`,
+          >`;
+        },
       })}
       <hub-pagination
         .totalPages=${this.totalPages}
         .currentPage=${this.currentPage}
         @page-change=${this.handlePageChange}
       ></hub-pagination>
-    </hub-container>`;
+    `;
   }
 
   static styles = [
     baseStyles,
     css`
-      h1 {
-        margin: 0;
-        font-size: 2rem;
-        font-weight: 300;
-        color: var(--primary-color);
-        white-space: nowrap;
-      }
-
-      section {
-        padding: 2rem 0;
-      }
-
-      .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .actions {
-        display: flex;
-        gap: 0.5rem;
-      }
-
       .employee-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -255,10 +228,6 @@ export class HubEmployeeList extends connect(store)(LitElement) {
       }
 
       @media (max-width: 480px) {
-        h1 {
-          font-size: 1.5rem;
-        }
-
         .employee-grid {
           grid-template-columns: repeat(1, 1fr);
         }

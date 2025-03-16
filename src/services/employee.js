@@ -5,12 +5,22 @@ import { ERROR_CODES } from "../error";
 const EMPLOYEES_KEY = "employees";
 
 export class EmployeeService {
-  static async getEmployees(page = 1, itemsPerPage = 10) {
+  static async getEmployees(page = 1, itemsPerPage = 10, searchQuery = "") {
     let employees = await this.getAllEmployees();
 
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const paginatedEmployees = employees.slice(startIndex, endIndex);
+    let paginatedEmployees = employees.slice(startIndex, endIndex);
+
+    if (searchQuery) {
+      paginatedEmployees = paginatedEmployees.filter(
+        (employee) =>
+          employee.firstName
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase()) ||
+          employee.lastName.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
 
     return {
       data: paginatedEmployees,

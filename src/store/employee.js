@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   employees: [],
+  searchQuery: "",
 };
 
 export const employeeSlice = createSlice({
@@ -25,10 +26,18 @@ export const employeeSlice = createSlice({
         (employee) => !action.payload.includes(employee.id)
       );
     },
+    setSearchQuery: (state, action) => {
+      state.searchQuery = action.payload;
+    },
   },
 });
 
-export const { setEmployees, addEmployee, updateEmployee, removeEmployee } =
-  employeeSlice.actions;
+export const {
+  setEmployees,
+  addEmployee,
+  updateEmployee,
+  removeEmployee,
+  setSearchQuery,
+} = employeeSlice.actions;
 
 export default employeeSlice.reducer;
