@@ -42,6 +42,7 @@ export class Home extends LitElement {
                   label="Search"
                   @value-changed=${this.handleSearch}
                   type="search"
+                  placeholder="Search"
                 ></hub-input>`
               : ""}
             <hub-button variant="icon" @click=${() => (this.view = "list")}>

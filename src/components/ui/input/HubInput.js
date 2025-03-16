@@ -8,6 +8,7 @@ export class HubInput extends LitElement {
     type: { type: String },
     value: { type: String },
     type: { type: String },
+    placeholder: { type: String },
   };
 
   constructor() {
@@ -18,6 +19,7 @@ export class HubInput extends LitElement {
     this.block = false;
     this.type = "text";
     this.value = "";
+    this.placeholder = "";
   }
 
   _handleInput(e) {
@@ -33,7 +35,7 @@ export class HubInput extends LitElement {
 
   render() {
     return html`<input
-      placeholder=${msg("Type")}
+      placeholder=${this.placeholder || msg("Type")}
       name=${this.name}
       type=${this.type}
       .value=${this.value}
