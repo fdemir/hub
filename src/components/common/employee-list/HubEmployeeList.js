@@ -84,18 +84,6 @@ export class HubEmployeeList extends connect(store)(LitElement) {
     }
   }
 
-  actionTemplate(data) {
-    // fix this inline style
-    return html`<div style="display: flex; gap: 0.5rem;">
-      <hub-button variant="icon" @click=${() => this._handleEdit(data.id)}>
-        <hub-icon name="edit"></hub-icon>
-      </hub-button>
-      <hub-button variant="icon" @click=${() => this.handleRemove(data.id)}>
-        <hub-icon name="trash"></hub-icon>
-      </hub-button>
-    </div>`;
-  }
-
   handleSelectedChanged(event) {
     this.selectedEmployeeList = event.detail.selected;
   }
@@ -125,6 +113,18 @@ export class HubEmployeeList extends connect(store)(LitElement) {
       })
       .join(", ")}
     )`;
+  }
+
+  actionTemplate(data) {
+    // fix this inline style
+    return html`<div style="display: flex; gap: 0.5rem;">
+      <hub-button variant="icon" @click=${() => this._handleEdit(data.id)}>
+        <hub-icon name="edit"></hub-icon>
+      </hub-button>
+      <hub-button variant="icon" @click=${() => this.handleRemove(data.id)}>
+        <hub-icon name="trash"></hub-icon>
+      </hub-button>
+    </div>`;
   }
 
   render() {
