@@ -4,7 +4,9 @@ import { connect } from "../../../mixins/connect";
 import { store } from "../../../store/app";
 import { setEmployees, removeEmployee } from "../../../store/employee";
 import { EmployeeService } from "../../../services/employee";
-import { router } from "../../../router";
+import { repeat } from "lit/directives/repeat.js";
+import { Router } from "@vaadin/router";
+import { Task } from "@lit/task";
 
 export class HubEmployeeList extends connect(store)(LitElement) {
   static properties = {
@@ -13,6 +15,11 @@ export class HubEmployeeList extends connect(store)(LitElement) {
     currentPage: { type: Number },
     selectedEmployeeList: { type: Array },
     deleteDialogOpen: { type: Boolean },
+
+    /**
+     * @type {"list" | "grid"}
+     */
+    view: { type: String },
   };
 
   constructor() {
@@ -21,30 +28,26 @@ export class HubEmployeeList extends connect(store)(LitElement) {
     this.currentPage = 1;
     this.selectedEmployeeList = [];
     this.deleteDialogOpen = false;
+    this.view = "list";
   }
 
   stateChanged(state) {
     this.employees = state.employee.employees;
   }
 
-  async fetchEmployees() {
-    const employees = await EmployeeService.getEmployees();
-    this.totalPages = employees.totalPages;
-    this.currentPage = employees.currentPage;
-    store.dispatch(setEmployees(employees.data));
-  }
+  _fetchEmployeesTask = new Task(this, {
+    args: () => [this.currentPage],
+    task: async ([page]) => {
+      const employees = await EmployeeService.getEmployees(page);
+      this.totalPages = employees.totalPages;
+      this.currentPage = employees.currentPage;
+      store.dispatch(setEmployees(employees.data));
+      return employees;
+    },
+  });
 
-  async firstUpdated() {
-    this.fetchEmployees();
-  }
-
-  handlePageChange(event) {
-    const page = event.detail.page;
-    const employees = EmployeeService.getEmployees(page);
-    this.totalPages = employees.totalPages;
-    this.currentPage = employees.currentPage;
-
-    store.dispatch(setEmployees(employees.data));
+  async handlePageChange(event) {
+    this.currentPage = event.detail.page;
   }
 
   /**
@@ -52,7 +55,9 @@ export class HubEmployeeList extends connect(store)(LitElement) {
    * @param {number} employeeId
    */
   handleRemove(employeeId) {
-    this.selectedEmployeeList = [...this.selectedEmployeeList, employeeId];
+    if (!this.selectedEmployeeList.includes(employeeId)) {
+      this.selectedEmployeeList = [...this.selectedEmployeeList, employeeId];
+    }
     this.deleteDialogOpen = true;
   }
 
@@ -61,14 +66,22 @@ export class HubEmployeeList extends connect(store)(LitElement) {
     this.selectedEmployeeList = [];
   }
 
+  _handleEdit(employeeId) {
+    Router.go(`/edit/${employeeId}`);
+  }
+
+  _handleSelect(employeeId) {
+    if (!this.selectedEmployeeList.includes(employeeId)) {
+      this.selectedEmployeeList = [...this.selectedEmployeeList, employeeId];
+    }
+  }
+
   actionTemplate(data) {
     // fix this inline style
     return html`<div style="display: flex; gap: 0.5rem;">
-      <a href=${`/edit/${data.id}`}>
-        <hub-button variant="icon">
-          <hub-icon name="edit"></hub-icon>
-        </hub-button>
-      </a>
+      <hub-button variant="icon" @click=${() => this._handleEdit(data.id)}>
+        <hub-icon name="edit"></hub-icon>
+      </hub-button>
       <hub-button variant="icon" @click=${() => this.handleRemove(data.id)}>
         <hub-icon name="trash"></hub-icon>
       </hub-button>
@@ -92,24 +105,25 @@ export class HubEmployeeList extends connect(store)(LitElement) {
     this.selectedEmployeeList = [];
   }
 
-  render() {
-    const dialogMessage =
-      "Are you sure you want to delete these employees? ( " +
-      this.selectedEmployeeList
-        .map((id) => {
-          const employee = this.employees.find((e) => e.id === id);
-          if (!employee) {
-            return "Employee not found";
-          }
-          return `${employee.firstName} ${employee.lastName}`;
-        })
-        .join(", ") +
-      " )";
+  get dialogMessage() {
+    return `Are you sure you want to delete these employees? (
+    ${this.selectedEmployeeList
+      .map((id) => {
+        const employee = this.employees.find((e) => e.id === id);
+        if (!employee) {
+          return "Employee not found";
+        }
+        return `${employee.firstName} ${employee.lastName}`;
+      })
+      .join(", ")}
+    )`;
+  }
 
+  render() {
     return html`<hub-container>
       <hub-dialog
         title="Are you sure?"
-        message=${dialogMessage}
+        message=${this.dialogMessage}
         approveText="Delete"
         cancelText="Cancel"
         @close=${this.handleDialogCancel}
@@ -122,48 +136,78 @@ export class HubEmployeeList extends connect(store)(LitElement) {
         <div class="header">
           <h1>Employee List</h1>
           <div class="actions">
-            <hub-button variant="icon">
+            <hub-button variant="icon" @click=${() => (this.view = "list")}>
               <hub-icon name="menu"></hub-icon>
             </hub-button>
-            <hub-button variant="icon">
+            <hub-button variant="icon" @click=${() => (this.view = "grid")}>
               <hub-icon name="grid"></hub-icon>
             </hub-button>
           </div>
         </div>
       </section>
 
-      <hub-table
-        .columns=${[
-          { id: "firstName", label: "First Name" },
-          { id: "lastName", label: "Last Name" },
-          {
-            id: "dateOfEmployment",
-            label: "Date of Employment",
-            cell: (data) =>
-              html`${new Date(data.dateOfEmployment).toLocaleDateString()}`,
-          },
-          {
-            id: "dateOfBirth",
-            label: "Date of Birth",
-            cell: (data) =>
-              html`${new Date(data.dateOfBirth).toLocaleDateString()}`,
-          },
-          { id: "phone", label: "Phone" },
-          { id: "email", label: "Email" },
-          { id: "department", label: "Department" },
-          { id: "position", label: "Position" },
-          {
-            id: "actions",
-            label: "Actions",
-            cell: (data) => this.actionTemplate(data),
-          },
-        ]}
-        .data=${this.employees}
-        selectable
-        .selected=${this.selectedEmployeeList}
-        accessorkey="id"
-        @selected-changed=${this.handleSelectedChanged}
-      ></hub-table>
+      ${this._fetchEmployeesTask.render({
+        pending: () => html`<hub-spinner></hub-spinner>`,
+        complete: () =>
+          html` ${this.view === "list"
+            ? html` <hub-table
+                .columns=${[
+                  { id: "firstName", label: "First Name" },
+                  { id: "lastName", label: "Last Name" },
+                  {
+                    id: "dateOfEmployment",
+                    label: "Date of Employment",
+                    cell: (data) =>
+                      html`${new Date(
+                        data.dateOfEmployment
+                      ).toLocaleDateString()}`,
+                  },
+                  {
+                    id: "dateOfBirth",
+                    label: "Date of Birth",
+                    cell: (data) =>
+                      html`${new Date(data.dateOfBirth).toLocaleDateString()}`,
+                  },
+                  { id: "phone", label: "Phone" },
+                  { id: "email", label: "Email" },
+                  { id: "department", label: "Department" },
+                  { id: "position", label: "Position" },
+                  {
+                    id: "actions",
+                    label: "Actions",
+                    cell: (data) => this.actionTemplate(data),
+                  },
+                ]}
+                .data=${this.employees}
+                selectable
+                .selected=${this.selectedEmployeeList}
+                accessorkey="id"
+                @selected-changed=${this.handleSelectedChanged}
+              ></hub-table>`
+            : html`
+                <div class="employee-grid">
+                  ${repeat(
+                    this.employees,
+                    (employee) => employee.id,
+                    (employee) =>
+                      html`<hub-employee-card
+                        .employee=${employee}
+                        @remove=${() => this.handleRemove(employee.id)}
+                        @edit=${() => this._handleEdit(employee.id)}
+                        @select=${() => this._handleSelect(employee.id)}
+                        .selected=${this.selectedEmployeeList.includes(
+                          employee.id
+                        )}
+                      ></hub-employee-card>`
+                  )}
+                </div>
+              `}`,
+
+        error: (error) =>
+          html`<span
+            >Error: ${errorMessages?.[error.message] || "Unknown error"}</span
+          >`,
+      })}
       <hub-pagination
         .totalPages=${this.totalPages}
         .currentPage=${this.currentPage}
@@ -180,6 +224,7 @@ export class HubEmployeeList extends connect(store)(LitElement) {
         font-size: 2rem;
         font-weight: 300;
         color: var(--primary-color);
+        white-space: nowrap;
       }
 
       section {
@@ -195,6 +240,28 @@ export class HubEmployeeList extends connect(store)(LitElement) {
       .actions {
         display: flex;
         gap: 0.5rem;
+      }
+
+      .employee-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .employee-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        .employee-grid {
+          grid-template-columns: repeat(1, 1fr);
+        }
       }
     `,
   ];

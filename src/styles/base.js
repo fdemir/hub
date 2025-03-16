@@ -16,4 +16,8 @@ export const baseStyles = css`
   tr {
     font-size: 16px;
   }
+
+  a {
+    color: var(--primary-color);
+  }
 `;

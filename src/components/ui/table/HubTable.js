@@ -77,7 +77,7 @@ export class HubTable extends LitElement {
                     <input
                       type="checkbox"
                       @change=${this.handleSelectAll}
-                      .checked=${this.selected.length === this.data.length &&
+                      .checked=${this.selected?.length === this.data.length &&
                       this.data.length > 0}
                     />
                   </th>`

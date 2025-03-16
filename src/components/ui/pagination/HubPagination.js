@@ -83,7 +83,6 @@ export class HubPagination extends LitElement {
     }
 
     const visiblePages = this._getVisiblePageNumbers();
-    const showStartEllipsis = visiblePages[0] > 1;
     const showEndEllipsis =
       visiblePages[visiblePages.length - 1] < this.totalPages;
 

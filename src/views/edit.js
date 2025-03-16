@@ -4,7 +4,8 @@ import { Router } from "@vaadin/router";
 import { router } from "../router";
 import { Task } from "@lit/task";
 import { msg } from "@lit/localize";
-
+import { errorMessages } from "../error";
+import { baseStyles } from "../styles/base";
 export class Edit extends LitElement {
   static get properties() {
     return {
@@ -56,9 +57,7 @@ export class Edit extends LitElement {
           @approve=${this._handleDialogApprove}
           .open=${this.dialogOpen}
           @close=${() => (this.dialogOpen = false)}
-        >
-          <hub-spinner></hub-spinner>
-        </hub-dialog>
+        ></hub-dialog>
 
         ${this._employeeTask.render({
           pending: () => html`<hub-spinner></hub-spinner>`,
@@ -69,11 +68,17 @@ export class Edit extends LitElement {
               mode="edit"
             ></hub-employee-form>
           `,
-          error: (error) => html`<p>Error loading employee: ${error}</p>`,
+          error: (error) =>
+            html`<p>
+              ${errorMessages[error.message]}
+              <a href="/">Go back</a>
+            </p>`,
         })}
       </hub-container>
     `;
   }
+
+  static styles = [baseStyles];
 }
 
 customElements.define("hub-edit-view", Edit);

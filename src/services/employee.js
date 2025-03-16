@@ -1,7 +1,7 @@
 import { DepartmentService } from "./department";
 import { PositionService } from "./position";
 import { sleep } from "../utils/sleep";
-
+import { ERROR_CODES } from "../error";
 const EMPLOYEES_KEY = "employees";
 
 export class EmployeeService {
@@ -75,9 +75,15 @@ export class EmployeeService {
   }
 
   static async getEmployee(id) {
-    const employees = await this.getEmployeeList();
     await sleep(400);
-    return employees.find((employee) => employee.id === id);
+    const employees = await this.getEmployeeList();
+    const item = employees.find((employee) => employee.id === id);
+
+    if (!item) {
+      throw new Error(ERROR_CODES.NOT_FOUND);
+    }
+
+    return item;
   }
 
   static async updateEmployee(id, employee) {
