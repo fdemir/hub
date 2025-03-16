@@ -30,6 +30,7 @@ suite("HubTable", () => {
     `);
 
     const emptyMessage = el.shadowRoot.querySelector("tbody td");
-    assert.equal(emptyMessage.textContent.trim(), "No data.");
+
+    assert.equal(emptyMessage.getAttribute("data-testid"), "no-data");
   });
 });

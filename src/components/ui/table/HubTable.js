@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { baseStyles } from "../../../styles/base";
+import { msg, updateWhenLocaleChanges } from "@lit/localize";
 
 export class HubTable extends LitElement {
   static get properties() {
@@ -41,6 +42,7 @@ export class HubTable extends LitElement {
     this.selected = [];
     this.accessorkey = "id";
     this.selectable = false;
+    updateWhenLocaleChanges(this);
   }
 
   handleSelectAll(event) {
@@ -110,7 +112,9 @@ export class HubTable extends LitElement {
                     </tr>`
                 )
               : html`<tr>
-                  <td colspan="${this.columns.length}">No data.</td>
+                  <td colspan="${this.columns.length}" data-testid="no-data">
+                    ${msg("No data")}
+                  </td>
                 </tr>`}
           </tbody>
         </table>

@@ -50,23 +50,17 @@ suite("HubSelect", () => {
   });
 
   test("selects an option when clicked", async () => {
-    // Open the dropdown
     element.shadowRoot.querySelector(".select-selected").click();
     await element.updateComplete;
 
-    // Click on an option
     const option = element.shadowRoot.querySelectorAll(".select-item")[1]; // Option 1
 
-    // Setup listener for the value-changed event
     const valueChangedPromise = oneEvent(element, "value-changed");
 
-    // Click the option
     option.click();
 
-    // Wait for the event
     const { detail } = await valueChangedPromise;
 
-    // Check that the value was updated
     expect(element.value).to.equal("option1");
     expect(detail.value).to.equal("option1");
     expect(element.open).to.be.false;
@@ -92,12 +86,10 @@ suite("HubSelect", () => {
   });
 
   test("closes dropdown when clicking outside", async () => {
-    // Open the dropdown
     element.shadowRoot.querySelector(".select-selected").click();
     await element.updateComplete;
     expect(element.open).to.be.true;
 
-    // Simulate click outside
     const outsideClickEvent = new MouseEvent("click", {
       bubbles: true,
       composed: true,
@@ -113,7 +105,6 @@ suite("HubSelect", () => {
     expect(selectElement.getAttribute("role")).to.equal("combobox");
     expect(selectElement.getAttribute("aria-expanded")).to.equal("false");
 
-    // Open dropdown
     selectElement.click();
     await element.updateComplete;
 

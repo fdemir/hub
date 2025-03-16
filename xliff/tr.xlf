@@ -106,6 +106,10 @@
   <source>Email Address</source>
   <target>Email Adresi</target>
 </trans-unit>
+<trans-unit id="s187528426100c44e">
+  <source>No data</source>
+  <target>Veri yok</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, getCompatibleStyle } from "lit";
 import { baseStyles } from "../../../styles/base";
 import { allLocales } from "../../../generated/locale-codes";
 import { getLocale, setLocale } from "../../../localization";
@@ -20,12 +20,14 @@ export class HubLocaleSelector extends LitElement {
     super();
     updateWhenLocaleChanges(this);
     this.locale = getLocale();
-
-    console.log(this.locale);
   }
 
   _handleLocaleChange(locale) {
     setLocale(locale);
+  }
+
+  updated() {
+    this.locale = getLocale();
   }
 
   render() {

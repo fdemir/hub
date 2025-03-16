@@ -9,7 +9,8 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's1e2e135dac5ba993': `Email Adresi`,
+      's187528426100c44e': `Veri yok`,
+'s1e2e135dac5ba993': `Email Adresi`,
 's1e45a4d7635fbda7': `Departman`,
 's25e9354649777c55': `Bir seçenek belirleyin`,
 's268ecd1cef45a9a8': `Emin misiniz?`,

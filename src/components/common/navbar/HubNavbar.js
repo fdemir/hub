@@ -2,7 +2,6 @@ import { LitElement, html, css } from "lit";
 import { baseStyles } from "../../../styles/base";
 import { updateWhenLocaleChanges } from "@lit/localize";
 import { msg } from "@lit/localize";
-
 export class HubNavbar extends LitElement {
   static properties = {
     title: { type: String },
@@ -14,6 +13,20 @@ export class HubNavbar extends LitElement {
     this.title = "ING";
     this._mobileMenuOpen = false;
     updateWhenLocaleChanges(this);
+  }
+
+  _handlePopState(event) {
+    this._mobileMenuOpen = false;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener("popstate", this._handlePopState.bind(this));
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    window.removeEventListener("popstate", this._handlePopState.bind(this));
   }
 
   toggleMobileMenu() {
